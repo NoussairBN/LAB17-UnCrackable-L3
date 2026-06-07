@@ -150,7 +150,6 @@ Nous chargeons la version de la bibliothèque native correspondant à notre arch
 ### 2. Localisation et analyse de la fonction `megaInit`
 Nous recherchons la fonction d'initialisation **`megaInit`** (ou `_Z8megaInitv`), responsable du démarrage des threads de détection :
 
-![Structure assembleur originale de megaInit](docs/screenshots/09_ghidra_assemble_megainit.png)
 
 ### 3. Application du patch `RET` sur `megaInit`
 Pour court-circuiter complètement le lancement des threads d'anti-debug/anti-Frida, nous sélectionnons la toute première instruction de `megaInit`, effectuons un clic droit -> **Patch Instruction** et la remplaçons par une instruction de retour immédiat **`RET`** (code hexadécimal `c3` sur x86_64) :
